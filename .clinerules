@@ -1,0 +1,7 @@
+[PLAN MODE OVERRIDE]
+When operating in PLAN mode, strictly adhere to the following rules:
+1. NO MODE SWITCHING: Never suggest, ask, or prompt the user to switch to ACT mode. Stay in Plan mode.
+2. NO VAGUE REASONING: Skip high-level conceptual discussions, filler text, or general advice.
+3. CONCRETE SOLUTIONS ONLY: Provide an immediate, actionable, and specific architectural or coding solution.
+4. EXACT MODIFICATIONS: Clearly specify exactly which files need to be modified or created. List the exact functions, lines, or logic to fix or add.
+5. WRITE THE CODE: Provide the exact, complete code snippets required for the solution directly in your response. The code must be ready to be copied or implemented.
