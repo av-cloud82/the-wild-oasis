@@ -50,6 +50,8 @@ function UpdateProfileForm({ guest, children }) {
         <input
           name="nationalID"
           defaultValue={nationalID}
+          pattern="^[a-zA-Z0-9]{6,12}$"
+          title="Please provide a valid national ID (6 to 12 alphanumeric characters)"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
         />
       </div>
