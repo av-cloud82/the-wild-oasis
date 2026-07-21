@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { updateGuest } from "../_lib/actions";
 
 function UpdateProfileForm({ guest, children }) {
