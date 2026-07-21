@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 import { getBookings } from "./data-service";
 import { redirect } from "next/navigation";
 
-export async function updateGuest(formData) {
+export async function updateGuest(prevState, formData) {
   const session = await auth();
 
   if (!session) throw Error("You must be logged in");
@@ -14,8 +14,11 @@ export async function updateGuest(formData) {
   const nationalID = formData.get("nationalID");
   const [nationality, countryFlag] = formData.get("nationality").split("%");
 
-  const regex = /^[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/? ]{3,12}$/;
-  if (!regex.test(nationalID)) throw Error("Provide a valid national ID ");
+  if (nationalID) {
+    const regex = /^[a-zA-Z0-9]{6,12}$/;
+    if (!regex.test(nationalID))
+      return { message: "You need to provide a valid NationalID" };
+  }
 
   const updateData = { nationality, countryFlag, nationalID };
 

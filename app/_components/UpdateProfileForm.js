@@ -1,14 +1,15 @@
 "use client";
 
-import { useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 import { updateGuest } from "../_lib/actions";
 
 function UpdateProfileForm({ guest, children }) {
+  const [state, formAction] = useFormState(updateGuest, null);
   const { fullName, email, nationalID, countryFlag } = guest;
 
   return (
     <form
-      action={updateGuest}
+      action={formAction}
       className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
     >
       <div className="space-y-2">
@@ -53,7 +54,11 @@ function UpdateProfileForm({ guest, children }) {
           pattern="^[a-zA-Z0-9]{6,12}$"
           title="Please provide a valid national ID (6 to 12 alphanumeric characters)"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          required
         />
+        {state?.message && (
+          <p className="text-red-400 text-sm font-semibold">{state.message}</p>
+        )}
       </div>
 
       <div className="flex justify-end items-center gap-6">
